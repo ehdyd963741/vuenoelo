@@ -1,5 +1,4 @@
 import {createRouter,createWebHistory} from "vue-router";
-import {createStore} from 'vuex';
 const router = createRouter({
   // 웹브라우저 주소에서 #아이디 이동하는 흔적을
   // 남기지 않는다.

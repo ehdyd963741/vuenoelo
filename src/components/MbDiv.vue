@@ -31,14 +31,21 @@
 
 <script>
   import {
+    computed,
     onMounted
   } from 'vue';
   import $ from 'jquery';
+  import { useStore } from 'vuex';
 
   export default {
-    props: ['mbmenu'],
-
+    
     setup() {
+      // vuex 의 기능을 사용하기 위한 참조 "객체"를 만든다.
+      // 현재는 store 변수를 통해서 접근하여 기능을 실행한다.
+      const store = useStore();
+      // store의 state (data) 는 수시로 변경 되므로 computed 로 감시한다.
+      const mbmenu = computed( () => store.getters.getMbMenuData );
+
       // 화면에 html 의 구성이 완료되면
       onMounted(() => {
         // 모바일 메뉴
@@ -105,7 +112,9 @@
 
       });
 
-      return {}
+      return {
+        mbmenu
+      }
     }
   }
 </script>
