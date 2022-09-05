@@ -1,6 +1,7 @@
 <template>
 <div>
   <!-- 모바일 메뉴 -->
+  <ModalPopview/>
   <MbDiv/>
   <!-- 배너 -->
   <BannerView />
@@ -138,6 +139,7 @@
   import VisualView from '@/components/VisualView.vue';
   import CategoryView from '@/components/CategoryView.vue';
   import SiteMap from '@/components/SiteMap.vue';
+  import ModalPopview from '@/components/ModalPopview.vue';
 
   export default {
     name: 'App',
@@ -146,7 +148,8 @@
       BannerView,
       VisualView,
       CategoryView,
-      SiteMap
+      SiteMap,
+      ModalPopview
     },
     setup() {
       onUpdated(() => {
