@@ -8,6 +8,9 @@
         disableOnIteraction: false,
       }"
       v-bind:loop = "true"
+      :pagination = "{
+        el: '.sw-visual-pg'
+        }"
       v-on:swiper="onSwiper"
       v-on:slideChange="onSlideChange"
       class="sw-visual"
@@ -15,13 +18,18 @@
 
       <swiper-slide class="swiper-slide" v-for="(item, index) in slideData" v-bind:key="index">
           <VisualList 
-          :vimg="item.vimg" 
-          :vtitle="item.vtitle" 
-          :vtxt="item.vtxt" 
-          :vbt="item.vbt" 
-          :vlink="item.vlink"
+          :vimg="item.img" 
+          :vtitle="item.title" 
+          :vtxt="item.txt" 
+          :vbt="item.bt" 
+          :vlink="item.link"
           />
       </swiper-slide>
+
+      <!-- 슬라이드 콘트롤 -->
+        <div class="sw-visual-control">
+          <div class="sw-visual-pg"></div>
+        </div>
 
     </Swiper>
 
@@ -31,9 +39,10 @@
 <script>
 import { ref } from "vue";
 
-import { Autoplay } from 'swiper';
+import { Autoplay, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 import VisualList from '@/components/VisualList.vue';
 export default {
@@ -46,29 +55,36 @@ export default {
   
   setup(){
     const slideData = ref([]);
-    slideData.value = [
+        slideData.value = [
       {
-        vimg:'PC_minimal_new.png',
-        vtitle:"밀크 에센스 로션",
-        vtxt:"국내 최초 100% <br />식품 그레이드 성분",
-        vbt:"SHOP",
-        vlink:"#"
+        img: 'PC_minimal_new.png',
+        title : '미니멀비 출시',
+        txt : '아이부터 어른까지 <br> 클린 포뮬러 저자극 케어',
+        bt : 'SHOP',
+        link : '#'
       },
       {
-        vimg:'PC1_newborn.png',
-        vtitle:"밀크 에센스 로션",
-        vtxt:"국내 최초 100% <br />식품 그레이드 성분",
-        vbt:"SHOP",
-        vlink:"#"
+        img: 'PC1_newborn.png',
+        title : 'SPECIAL OFFER',
+        txt : '노엘로힐스가 제안하는 <br> 아기 스킨케어 출산준비물',
+        bt : 'SHOP',
+        link : '#'
       },
       {
-        vimg:'PC3_Branding.png',
-        vtitle:"제품3",
-        vtxt:"국내 최초 100% <br />식품 그레이드 성분",
-        vbt:"SHOP",
-        vlink:"#"
+        img: 'PC2_BabyEssence.png',
+        title : '밀크 에센스 로션',
+        txt : '국내 최초 100% <br> 식품 그레이드 성분',
+        bt : 'SHOP',
+        link : '#'
+      },
+      {
+        img: 'PC3_Branding.png',
+        title : '8:23 PM',
+        txt : '가족에게 행복을 선사하는 <br> 스킨케어 라이프스타일 브랜드',
+        bt : 'SHOP',
+        link : '#'
       }
-    ];
+    ]
 
     const onSwiper = (swiper) => {
       console.log(swiper)
@@ -79,7 +95,7 @@ export default {
     return {
       onSwiper,
       onSlideChange,
-      modules: [Autoplay],
+      modules: [Autoplay,Pagination],
       slideData
     }
   }
