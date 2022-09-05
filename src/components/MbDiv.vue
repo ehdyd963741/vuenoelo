@@ -45,7 +45,7 @@
       const store = useStore();
       // store의 state (data) 는 수시로 변경 되므로 computed 로 감시한다.
       const mbmenu = computed( () => store.getters.getMbMenuData );
-      store.dispatch('fetchmbMenuData');
+
 
       // 화면에 html 의 구성이 완료되면
       onUpdated(() => {
