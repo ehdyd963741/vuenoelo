@@ -127,7 +127,7 @@
 </template>
 <script>
   import {
-    onMounted
+    onUpdated
   } from 'vue';
 
   import $ from 'jquery';
@@ -149,7 +149,7 @@
       SiteMap
     },
     setup() {
-      onMounted(() => {
+      onUpdated(() => {
         // 스크롤시 header 고정
         let header = $('.header');
         let wrap = $('.wrap');

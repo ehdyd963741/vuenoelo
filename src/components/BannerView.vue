@@ -30,12 +30,12 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { onUpdated, ref } from 'vue';
 import $ from 'jquery';
 
 export default {
   setup() {
-    onMounted( () => {
+    onUpdated( () => {
       // banner 의 높이값 px
       let fixY = ref(0);
       fixY.value = $('.banner').height();      
