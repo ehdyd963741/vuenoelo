@@ -63,7 +63,11 @@
         mb_div.click(function () {
           mb_div.hide();
         });
-
+        // mb-close누르면 닫기
+        let mb_close = $('.mb-close');
+        mb_close.click(function () {
+          mb_div.hide();
+        });
         // 내용을 클릭하면 배경 신호 전달 막기
         $('.mb-bg').click(function (event) {
           // 신호 전달 막기
